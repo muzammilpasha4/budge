@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rails-app
+  labels:
+    app: rails-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rails-app
+  template:
+    metadata:
+      labels:
+        app: rails-app
+    spec:
+      containers:
+      - name: rails-app
+        image: muzammilp/new-budget-app
+        ports:
+        - containerPort: 3000
+        env:
+        - name: RAILS_ENV
+          value: production
+        - name: DATABASE_URL
+          value: postgresql://budget_user:password123@postgres:5432/budget_db
+        - name: SECRET_KEY_BASE
+          value: e9cac777aee1e042ba2aebd2578f03e9fc31d0c6034c6a5108836acea600469a80906f6b55ad02502ae5ea128d02bc40ba29fb6bef8e7a051e409e1538d3ab53 
+      imagePullSecrets:
+      - name: regcred
