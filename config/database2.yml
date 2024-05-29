@@ -23,10 +23,10 @@ default: &default
 
 development:
   <<: *default
-  database: Budgy_development
+  database: budget_app_development
 
   # The specified database role being used to connect to postgres.
-  # To create additional roles in postgres see $ createuser --help.
+  # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user running Rails.
   #username: Budgy
@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: Budgy_production
-  username: Budgy
-  password: <%= ENV["Budgy_DATABASE_PASSWORD"] %>
+  database: budget_app_development
+  username: postgres
+  password: password
